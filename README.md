@@ -536,28 +536,28 @@ Delegation = one object gives responsibility to another object to do some work.
 In SwiftUI, views are the building blocks of your app’s user interface.
 A control is a view that allows the user to interact (like buttons, sliders, toggles, etc.).
 
-| Control            | Purpose                 | Example        |
-| ------------------ | ----------------------- | -------------- |
-| **Label**          | Text + Image            | Menu items     |  Label("Profile", systemImage: "person.circle")  |
-| **TextEditor**     | Multi-line text input   | Notes          |  TextEditor(text: $notes)                        |
-| **Text**           | Display static text     | Titles         |  Text("Hello, SwiftUI!")                         |
-| **TextField**      | Single-line input       | Forms          |  TextField("Enter name", text: $name)            |
-| **SecureField**    | Password input          | Login          |  SecureField("Enter password", text: $password)  |
-| **Image**          | Show image              | Logo           |  Image("profilePic")                             |
-| **AsyncImage**     | Load image from web     | Profile        |  AsyncImage(url: URL(string: "https://example.com/image.jpg")) |
-| **Button**         | Perform action          | Submit         |  Button("Tap Me") { print("Button tapped!")}     |
-| **Link**           | Open URL                | Website        |  Link("Visit Apple", destination: URL(string: "https://apple.com")!) |
-| **NavigationLink** | Go to another view      | Details page   |  NavigationLink("Go to Details", destination: DetailView()) |
-| **ToolbarItem**    | Add toolbar button      | Navigation bar |  .toolbar { ToolbarItem(placement: .navigationBarTrailing) {.. |
-| **Toggle**         | On/Off switch           | Settings       |  Toggle("Enable Notifications", isOn: $isOn)    |
-| **Map**            | Display location        | GPS            |  
-| **Picker**         | Select option           | Dropdown       |  Picker("Select Fruit", selection: $choice) { text()..|
-| **DatePicker**     | Choose date/time        | Schedule       |  DatePicker("Select Date", selection: $date, displayedComponents: .date) |                  
-| **ProgressView**   | Show progress           | Loading        | ProgressView("Loading...")                          |
-| **Slider**         | Adjust continuous value | Volume         | Slider(value: $volume, in: 0...1) Text("Volume: \(volume)")  |
-| **Stepper**        | Adjust discrete value   | Quantity       | Stepper("Count: \(count)", value: $count, in: 0...10)  |
-| **Chart**          | Data visualization      | Graph          |
-| **Shape**          | Draw geometric figure   | UI design      | Circle()                                              |
+| Control            | Purpose                 | Example        | Example                                                                    |
+| ------------------ | ----------------------- | -------------- |--------------------------------------------------------------------------- |
+| **Label**          | Text + Image            | Menu items     |  Label("Profile", systemImage: "person.circle")                            |
+| **TextEditor**     | Multi-line text input   | Notes          |  TextEditor(text: $notes)                                                  |
+| **Text**           | Display static text     | Titles         |  Text("Hello, SwiftUI!")                                                   |
+| **TextField**      | Single-line input       | Forms          |  TextField("Enter name", text: $name)                                      |
+| **SecureField**    | Password input          | Login          |  SecureField("Enter password", text: $password)                            |
+| **Image**          | Show image              | Logo           |  Image("profilePic")                                                       |
+| **AsyncImage**     | Load image from web     | Profile        |  AsyncImage(url: URL(string: "https://example.com/image.jpg"))             |
+| **Button**         | Perform action          | Submit         |  Button("Tap Me") { print("Button tapped!")}                               |
+| **Link**           | Open URL                | Website        |  Link("Visit Apple", destination: URL(string: "https://apple.com")!)       |
+| **NavigationLink** | Go to another view      | Details page   |  NavigationLink("Go to Details", destination: DetailView())                |
+| **ToolbarItem**    | Add toolbar button      | Navigation bar |  .toolbar { ToolbarItem(placement: .navigationBarTrailing) {..             |
+| **Toggle**         | On/Off switch           | Settings       |  Toggle("Enable Notifications", isOn: $isOn)                               |
+| **Map**            | Display location        | GPS            |                                                                            |
+| **Picker**         | Select option           | Dropdown       |  Picker("Select Fruit", selection: $choice) { text()..                     |
+| **DatePicker**     | Choose date/time        | Schedule       |  DatePicker("Select Date", selection: $date, displayedComponents: .date)   |                  
+| **ProgressView**   | Show progress           | Loading        | ProgressView("Loading...")                                                 |
+| **Slider**         | Adjust continuous value | Volume         | Slider(value: $volume, in: 0...1) Text("Volume: \(volume)")                |
+| **Stepper**        | Adjust discrete value   | Quantity       | Stepper("Count: \(count)", value: $count, in: 0...10)                      |
+| **Chart**          | Data visualization      | Graph          |                                                                            |
+| **Shape**          | Draw geometric figure   | UI design      | Circle()                                                                   |
 
 
 ```swift
