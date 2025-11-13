@@ -559,6 +559,333 @@ A control is a view that allows the user to interact (like buttons, sliders, tog
 | **Chart**          | Data visualization      | Graph          |                                                                            |
 | **Shape**          | Draw geometric figure   | UI design      | Circle()                                                                   |
 
+---
+### 🎯 1. Touches and Gestures
+
+In iOS, when you touch the screen, the system recognizes it as a touch event.
+
+A gesture is a specific pattern of touches that the system interprets as an action (like tap, swipe, or pinch).
+
+➡️ Touches
+
+Definition:
+A touch is a physical contact with the touchscreen.
+The iOS system tracks each touch and reports details like:
+
+👉 Location (x, y position on screen)
+
+👉 Time of touch
+
+👉 Movement (dragging, swiping, etc.)
+
+👉 Number of touches (1 finger, 2 fingers, etc.)
+
+➡️ Gestures
+
+Definition:
+A gesture is a recognized pattern of one or more touches (like tap, pinch, rotate).
+Instead of manually tracking touches, you can use Gesture Recognizers.
+
+Common Gestures:
+
+👉 Tap → single or double tap
+
+👉 Swipe → move finger in a direction
+
+👉 Pinch → zoom in/out (2 fingers)
+
+👉 Rotate → rotate object (2 fingers)
+
+👉 Long Press → hold finger on screen
+
+---
+
+➡️ Multi-Touch Gesture Recognition
+
+Definition:
+Multi-touch means using more than one finger at the same time.
+For example:
+
+👉 Pinch to zoom (2 fingers)
+
+👉 Rotate gesture (2 fingers turning)
+
+👉 Two-finger tap
+
+🎯 What is Gesture Recognition in SwiftUI?
+
+In SwiftUI, gesture recognition is done using gesture modifiers.
+You can attach gestures like tap, long press, drag, pinch (zoom), or rotation to any view.
+
+
+1️⃣ Tap Gesture
+```swift
+Text("Tap Me")
+    .padding()
+    .background(Color.blue)
+    .foregroundColor(.white)
+    .gesture(
+        TapGesture(count: 1)
+            .onEnded {
+                print("Tapped once!")
+            }
+    )
+
+```
+
+2️⃣ Long Press Gesture
+ 
+
+```swift
+.gesture(
+        LongPressGesture(minimumDuration: 1.0)
+            .onEnded { _ in
+                print("Long press detected!")
+            }
+    )
+
+```
+
+3️⃣ Drag Gesture
+```swift
+.gesture(
+        DragGesture()
+            .onChanged { value in
+                position = value.translation
+            }
+            .onEnded { _ in
+                position = .zero
+            }
+    )
+```
+
+4️⃣ Magnification (Pinch/Zoom) Gesture
+```swift
+ .gesture(
+        MagnificationGesture()
+            .onChanged { value in
+                scale = value
+            }
+            .onEnded { _ in
+                scale = 1.0
+            }
+    )
+```
+
+5️⃣ Rotation Gesture
+```swift
+.gesture(
+        RotationGesture()
+            .onChanged { value in
+                angle = value
+            }
+            .onEnded { _ in
+                angle = .zero
+            }
+    )
+```
+
+
+6️⃣ Combining Gestures
+```swift
+ .gesture(
+        MagnificationGesture()
+            .onChanged { value in print("Zooming: \(value)") }
+    )
+    .simultaneousGesture(
+        RotationGesture()
+            .onChanged { value in print("Rotating: \(value.degrees)") }
+    )
+```
+---
+## 3️⃣ Define the Picker component in SwiftUI and describe its various styles. Explain how it can be used to allow users to select from a list of options, providing an example of its implementation in a form or settings screen.
+
+Explanation:
+Picker in SwiftUI is a UI control that allows users to choose a value from a list of options.
+
+Syntax Example:
+```swift
+@State private var choice = "Apple"
+
+Picker("Select Fruit", selection: $choice) {
+    Text("Apple")
+    Text("Banana")
+    Text("Mango")
+}
+.pickerStyle(.menu)
+
+```
+
+
+Picker Styles:
+
+👉 DefaultPickerStyle() – Basic wheel style (used in forms).
+
+👉 WheelPickerStyle() – Scroll wheel, common on iPhone.
+
+👉 SegmentedPickerStyle() – Horizontal segments like tabs.
+
+👉 MenuPickerStyle() – Dropdown-style menu.
+
+---
+## 4️⃣ Describe the differences between TextField and SecureField in SwiftUI and explain when to use each in a user interface.
+
+| **Feature**    | **TextField**                 | **SecureField**                       |
+| -------------- | ----------------------------- | ------------------------------------- |
+| **Purpose**    | Used for normal text input.   | Used for password or sensitive input. |
+| **Visibility** | Displays entered text openly. | Hides input with dots or asterisks.   |
+| **Example**    | Username, Email, Name         | Password, PIN                         |
+
+
+```swift
+@State private var username = ""
+@State private var password = ""
+
+TextField("Enter username", text: $username)
+SecureField("Enter password", text: $password)
+
+```
+✅ When to Use:
+
+👉 TextField: For general data input.
+
+👉 SecureField: When entering confidential data.
+
+---
+
+## 1️⃣ You are tasked with creating a responsive user interface for an iOS app that should adapt seamlessly to different screen sizes and orientations. Describe how you would use Stack Views to achieve this goal.
+
+Explanation:
+
+In SwiftUI, Stack Views (HStack, VStack, and ZStack) are used to arrange views responsively.
+
+✅ Types of Stack Views:
+
+👉 VStack – Arranges elements vertically.
+
+👉 HStack – Arranges elements horizontally.
+
+👉 ZStack – Overlaps elements (for layering).
+
+How it helps responsiveness:
+
+👉 Automatically adjusts layout based on device screen size and orientation (portrait/landscape).
+
+👉 Works with Spacer() and padding() to make views flexible.
+
+👉 Supports alignment and frame modifiers for adaptive layouts.
+
+```swift
+VStack {
+    Text("Welcome")
+        .font(.title)
+    HStack {
+        Button("Login") { }
+        Button("Signup") { }
+    }
+}
+.padding()
+
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        ZStack {
+            // Background color
+            Color.blue
+                .ignoresSafeArea()
+            
+            // Circle in the middle
+            Circle()
+                .fill(Color.white)
+                .frame(width: 200, height: 200)
+            
+            // Text on top of the circle
+            Text("Hello ZStack!")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.blue)
+        }
+    }
+}
+
+
+```
+Result:
+
+👉 Adapts automatically to iPhone, iPad, and orientation changes.
+
+👉 Simplifies creating flexible UIs.
+
+## 2️⃣ Explain the steps to implement a simple gesture recognizer in SwiftUI to respond to user gestures and update the user interface accordingly.
+
+Explanation:
+
+In SwiftUI, gestures (like tap, drag, long press) are handled using gesture modifiers.
+
+Steps:
+
+Create a State variable to store UI changes.
+
+Attach a gesture (e.g., .onTapGesture, .gesture()) to a view.
+
+Update the State variable inside the gesture handler.
+
+SwiftUI automatically updates the UI when the state changes.
+
+Example (Tap Gesture):
+
+```swift
+@State private var colorChanged = false
+
+Circle()
+    .fill(colorChanged ? .green : .blue)
+    .frame(width: 100, height: 100)
+    .onTapGesture {
+        colorChanged.toggle()
+    }
+
+```
+## 3️⃣ Using an example, explain the purpose of NavigationLink in SwiftUI and how it enables navigation between views in an iOS application.
+
+Explanation:
+
+NavigationLink is used in SwiftUI to move from one view to another, just like pushing screens in iOS navigation.
+
+Steps:
+
+Wrap your main view inside a NavigationView.
+
+Use NavigationLink to define the destination view.
+
+Example:
+```swift
+NavigationView {
+    VStack {
+        Text("Home Screen")
+        NavigationLink(destination: DetailView()) {
+            Text("Go to Details")
+        }
+    }
+}
+
+```
+Destination View:
+
+```swift
+struct DetailView: View {
+    var body: some View {
+        Text("This is the Detail Screen")
+    }
+}
+
+```
+👉 Provides smooth navigation between screens.
+
+👉 Maintains a navigation bar automatically.
+
+👉 Works well in forms, lists, and menus.
 
 ```swift
 ```
