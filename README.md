@@ -887,5 +887,55 @@ struct DetailView: View {
 
 👉 Works well in forms, lists, and menus.
 
+---
+
+🧭 1️⃣ NavigationView
+
+Definition:
+NavigationView is a container that provides a navigation bar and manages the navigation stack (how screens are pushed and popped).
+
+Purpose:
+It defines the overall navigation structure for your app.
+
+Example:
+```swift
+NavigationView {
+    Text("Welcome to Home Screen")
+        .navigationTitle("Home")
+}
+```
+
+✅ Key Points:
+
+👉 Used only once (usually at the root of your screen).
+
+👉 Adds a title bar automatically.
+
+👉 Required to make NavigationLink work properly.
+
+🔗 2️⃣ NavigationLink
+
+Definition:
+NavigationLink is a button-like component used inside a NavigationView to navigate to another view.
+
+Purpose:
+It defines where to go when tapped — similar to a hyperlink or “Next Page” button.
+
+Example:
+```swift
+NavigationLink("Go to Details", destination: DetailView())
+
+```
+
+✅ Key Points:
+
+👉 Used inside a NavigationView.
+
+👉 Pushes a new view onto the navigation stack when tapped.
+
+👉 Automatically provides a back button in the next view
+
+---
+
 ```swift
 ```
