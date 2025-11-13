@@ -936,6 +936,196 @@ NavigationLink("Go to Details", destination: DetailView())
 👉 Automatically provides a back button in the next view
 
 ---
+### 🧭property wrapper
+
+
+In Swift, a property wrapper is a special structure or class that adds extra behavior to a property — without repeating the same code everywhere.
+🧩 Simple Definition
+
+A property wrapper lets you wrap a property with custom logic for:
+
+👉 storing values,
+
+👉 validating data,
+
+👉 observing changes, or
+
+👉 applying transformations.
+
+----
+
+🧩 1. @AppStorage
+🔹 What it does:
+
+@AppStorage automatically stores and retrieves data from UserDefaults.
+That means your data persists even after you close the app.
+
+```swift
+struct ContentView: View {
+    @AppStorage("username") var username: String = "Guest"
+
+    var body: some View {
+        VStack {
+            Text("Hello, \(username)!")
+            TextField("Enter name", text: $username)
+                .textFieldStyle(.roundedBorder)
+                .padding()
+        }
+    }
+}
+
+```
+----
+
+🧩 2. @Binding
+
+
+@Binding connects one view’s property to another view’s state.
+So if one changes → the other updates automatically.
+
+```swift
+struct ParentView: View {
+    @State private var name = "SwiftUI"
+
+    var body: some View {
+        ChildView(name: $name)
+    }
+}
+
+struct ChildView: View {
+    @Binding var name: String
+
+    var body: some View {
+        TextField("Edit name", text: $name)
+            .textFieldStyle(.roundedBorder)
+            .padding()
+    }
+}
+
+```
+🧩 3. @Environment
+
+
+
+@Environment lets you access system-wide values (like color scheme, locale, etc.)
+provided by SwiftUI.
+
+🧠 Think of it like:
+
+👉 Getting read-only settings from the environment.
+
+----
+
+🧩 4. @EnvironmentObject
+🔹 What it does:
+
+👉 @EnvironmentObject is used to share your own data model across many views
+without passing it manually every time.
+
+🧠 Think of it like:
+
+A shared global object for your app data.
+
+----
+🧩 5. @FetchRequest
+
+
+@FetchRequest is used to retrieve data from Core Data automatically and keep your SwiftUI view in sync with the database.
+
+🧠 Think of it like:
+
+A live connection between your Core Data storage and your SwiftUI view.
+
+👉 Whenever the data in Core Data changes → your view updates automatically.
+
+----
+
+🧩 6. @FocusedBinding
+
+
+@FocusedBinding is used to link a value to the currently focused view,
+like a TextField, TextEditor, or another input control.
+
+It helps manage focus and read/write data for whichever view is active.
+
+🧠 Think of it like:
+
+A way to access or change the value of the currently active input.
+
+---
+🧩 7. @FocusedValue
+🔹 What it does:
+
+@FocusedValue is used to read data from the currently focused view.
+Unlike @FocusedBinding, it’s read-only.
+
+---
+
+🧩 8. @GestureState
+🔹 What it does:
+
+@GestureState is used to track a gesture’s changing value (like drag distance, rotation, or scale) while the gesture is happening.
+
+Once the gesture ends, the value automatically resets.
+
+🧠 Think of it like:
+
+A temporary state that lives only during the gesture
+
+
+---
+🧩 9. @ObservedObject
+🔹 What it does:
+
+@ObservedObject allows a SwiftUI view to observe an external data class (that conforms to ObservableObject)
+and update automatically when data changes.
+
+🧠 Think of it like:
+
+A link between a SwiftUI view and a data model that changes.
+
+----
+🧩 10. @Published
+🔹 What it does:
+
+@Published is used inside a class that conforms to ObservableObject to mark which properties should trigger view updates.
+
+----
+
+🧩 11. @ScaledMetric
+🔹 What it does:
+
+@ScaledMetric automatically scales numeric values (like size or spacing) based on the user’s Dynamic Type settings (font size settings in Accessibility).
+
+So your layout adapts when the user changes their text size on the device.
+
+---
+🧩 12. @SceneStorage
+🔹 What it does:
+
+@SceneStorage automatically saves and restores small pieces of data (like text, selected tab, scroll position)
+when your SwiftUI scene becomes inactive or is closed, without needing Core Data or UserDefaults.
+
+🧠 Think of it like:
+
+A “temporary memory” that keeps your view state between app sessions (per scene/window).
+
+----
+
+🧩 13. @UIApplicationDelegateAdaptor
+🔹 What it does:
+
+@UIApplicationDelegateAdaptor lets you use an old UIKit AppDelegate in a SwiftUI App.
+It connects UIKit’s UIApplicationDelegate methods (like applicationDidFinishLaunching) to your SwiftUI lifecycle.
+
+🧠 Think of it like:
+
+A bridge between SwiftUI’s app lifecycle and UIKit’s AppDelegate methods.
+
+---
+
+
+
 
 ```swift
 ```
