@@ -191,7 +191,7 @@ You use Storyboard files (.storyboard) to visually design app screens (called sc
 
 ---
 
-📱 Simple View Application Template
+### 📱 Simple View Application Template
 
 A Simple View Application in SwiftUI is the basic template used to create an iOS app that contains a single view (screen).
 It helps you:
@@ -940,7 +940,7 @@ NavigationLink("Go to Details", destination: DetailView())
 
 
 In Swift, a property wrapper is a special structure or class that adds extra behavior to a property — without repeating the same code everywhere.
-🧩 Simple Definition
+
 
 A property wrapper lets you wrap a property with custom logic for:
 
@@ -954,8 +954,8 @@ A property wrapper lets you wrap a property with custom logic for:
 
 ----
 
-🧩 1. @AppStorage
-🔹 What it does:
+### 🧩 1. @AppStorage
+
 
 @AppStorage automatically stores and retrieves data from UserDefaults.
 That means your data persists even after you close the app.
@@ -977,7 +977,7 @@ struct ContentView: View {
 ```
 ----
 
-🧩 2. @Binding
+### 🧩 2. @Binding
 
 
 @Binding connects one view’s property to another view’s state.
@@ -1003,7 +1003,7 @@ struct ChildView: View {
 }
 
 ```
-🧩 3. @Environment
+### 🧩 3. @Environment
 
 
 
@@ -1016,8 +1016,8 @@ provided by SwiftUI.
 
 ----
 
-🧩 4. @EnvironmentObject
-🔹 What it does:
+### 🧩 4. @EnvironmentObject
+
 
 👉 @EnvironmentObject is used to share your own data model across many views
 without passing it manually every time.
@@ -1027,7 +1027,7 @@ without passing it manually every time.
 A shared global object for your app data.
 
 ----
-🧩 5. @FetchRequest
+### 🧩 5. @FetchRequest
 
 
 @FetchRequest is used to retrieve data from Core Data automatically and keep your SwiftUI view in sync with the database.
@@ -1040,7 +1040,7 @@ A live connection between your Core Data storage and your SwiftUI view.
 
 ----
 
-🧩 6. @FocusedBinding
+### 🧩 6. @FocusedBinding
 
 
 @FocusedBinding is used to link a value to the currently focused view,
@@ -1053,16 +1053,16 @@ It helps manage focus and read/write data for whichever view is active.
 A way to access or change the value of the currently active input.
 
 ---
-🧩 7. @FocusedValue
-🔹 What it does:
+### 🧩 7. @FocusedValue
+
 
 @FocusedValue is used to read data from the currently focused view.
 Unlike @FocusedBinding, it’s read-only.
 
 ---
 
-🧩 8. @GestureState
-🔹 What it does:
+### 🧩 8. @GestureState
+
 
 @GestureState is used to track a gesture’s changing value (like drag distance, rotation, or scale) while the gesture is happening.
 
@@ -1074,8 +1074,8 @@ A temporary state that lives only during the gesture
 
 
 ---
-🧩 9. @ObservedObject
-🔹 What it does:
+### 🧩 9. @ObservedObject
+
 
 @ObservedObject allows a SwiftUI view to observe an external data class (that conforms to ObservableObject)
 and update automatically when data changes.
@@ -1085,23 +1085,22 @@ and update automatically when data changes.
 A link between a SwiftUI view and a data model that changes.
 
 ----
-🧩 10. @Published
-🔹 What it does:
+### 🧩 10. @Published
+
 
 @Published is used inside a class that conforms to ObservableObject to mark which properties should trigger view updates.
 
 ----
 
-🧩 11. @ScaledMetric
-🔹 What it does:
+### 🧩 11. @ScaledMetric
 
 @ScaledMetric automatically scales numeric values (like size or spacing) based on the user’s Dynamic Type settings (font size settings in Accessibility).
 
 So your layout adapts when the user changes their text size on the device.
 
 ---
-🧩 12. @SceneStorage
-🔹 What it does:
+### 🧩 12. @SceneStorage
+
 
 @SceneStorage automatically saves and restores small pieces of data (like text, selected tab, scroll position)
 when your SwiftUI scene becomes inactive or is closed, without needing Core Data or UserDefaults.
@@ -1112,8 +1111,8 @@ A “temporary memory” that keeps your view state between app sessions (per sc
 
 ----
 
-🧩 13. @UIApplicationDelegateAdaptor
-🔹 What it does:
+### 🧩 13. @UIApplicationDelegateAdaptor
+
 
 @UIApplicationDelegateAdaptor lets you use an old UIKit AppDelegate in a SwiftUI App.
 It connects UIKit’s UIApplicationDelegate methods (like applicationDidFinishLaunching) to your SwiftUI lifecycle.
